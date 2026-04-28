@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.react-flow__node {
+  cursor: pointer;
+}
+
+/* Ensure handles don't overflow node bounds */
+.react-flow__handle {
+  background: #94a3b8 !important;
+  width: 8px !important;
+  height: 8px !important;
+  border: 2px solid white !important;
+}
+
+.react-flow__handle:hover {
+  background: #475569 !important;
+}
+
+/* Edge label */
+.react-flow__edge-text {
+  font-size: 10px;
+}
+
+/* Panel transition */
+.panel-slide-enter {
+  transform: translateX(100%);
+}
+.panel-slide-enter-active {
+  transform: translateX(0);
+  transition: transform 200ms ease-out;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

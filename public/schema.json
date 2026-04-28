@@ -1,0 +1,249 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "morgan-map-import-v1",
+  "title": "Morgan Map import format",
+  "description": "Schema for importing a decision-centred service map into the Morgan Map application. The map plots service elements on two axes: Automation (how far the element can be handled by software rather than humans) and Criticality (how much the element matters to good outcomes and trust in the decision). Nodes represent service elements; edges represent relationships between them.",
+
+  "type": "object",
+  "required": ["version", "name", "nodes", "edges"],
+  "additionalProperties": false,
+
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "1.0",
+      "description": "Schema version. Always '1.0'."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name for the map. E.g. 'Victims Pathway' or 'DVLA Drivers Medical Service'."
+    },
+    "exportedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp. Optional — can be omitted."
+    },
+    "nodes": {
+      "type": "array",
+      "description": "The service elements plotted on the map. Each node is positioned by its automationLevel (x-axis) and criticalityLevel (y-axis).",
+      "items": { "$ref": "#/definitions/Node" }
+    },
+    "edges": {
+      "type": "array",
+      "description": "Directed relationships between nodes.",
+      "items": { "$ref": "#/definitions/Edge" }
+    }
+  },
+
+  "definitions": {
+
+    "Node": {
+      "type": "object",
+      "required": ["id", "data"],
+      "additionalProperties": true,
+      "description": "A service element. Position on the canvas is derived automatically from automationLevel and criticalityLevel — you do not need to calculate pixel coordinates.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for this node within the map. E.g. 'node_1' or 'dvla_eligibility_decision'. Must be unique across all nodes."
+        },
+        "type": {
+          "type": "string",
+          "enum": ["decision", "evidence", "execution", "interface"],
+          "description": "ReactFlow render type. Should match data.nodeType. If omitted, it is derived automatically from data.nodeType."
+        },
+        "position": {
+          "$ref": "#/definitions/Position",
+          "description": "Canvas pixel coordinates. Do not set this field — the app always derives position automatically from automationLevel and criticalityLevel. Any value here is ignored on import."
+        },
+        "data": { "$ref": "#/definitions/NodeData" }
+      }
+    },
+
+    "Position": {
+      "type": "object",
+      "required": ["x", "y"],
+      "description": "Pixel position on the ReactFlow canvas. This field is ignored on import — position is always derived from automationLevel and criticalityLevel. Do not set this field when generating a map.",
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" }
+      }
+    },
+
+    "NodeData": {
+      "type": "object",
+      "required": ["title", "nodeType", "automationLevel", "criticalityLevel"],
+      "additionalProperties": false,
+      "description": "The semantic data for a node. This is the most important part — position, styling, and canvas properties are all derived from these values.",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Short name for this service element. Shown on the node in the map. E.g. 'Eligibility Decision', 'Case Worker Dashboard', 'Fraud Risk Score'."
+        },
+        "description": {
+          "type": "string",
+          "default": "",
+          "description": "Longer description of what this element does, how it works, and any relevant context. Can be multiple sentences."
+        },
+        "nodeType": {
+          "type": "string",
+          "enum": ["decision", "evidence", "execution", "interface"],
+          "description": "The type of service element. Choose the best fit:\n- 'decision': a point where a judgment, choice, determination, or classification is made\n- 'evidence': information, signals, rules, records, or inputs used to support or shape a decision\n- 'execution': an action that carries out, implements, or operationalises a decision\n- 'interface': a touchpoint where a person gives input, receives output, or experiences part of the system"
+        },
+        "automationLevel": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "How far this element is handled by software or machines rather than human effort. This is the X axis position. Use one of these five levels:\n0.00 = Human-led: done by people, with little or no automation\n0.25 = Assisted: people lead, with system support\n0.50 = Part-automated: some parts automated, but people still do key steps\n0.75 = Conditionally automated: automated in defined cases, humans handle exceptions and oversight\n1.00 = Fully automated: handled end-to-end by the system with minimal human involvement"
+        },
+        "criticalityLevel": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "How much this element matters to getting the decision right and sustaining trust in the outcome. Includes its effect on quality, safety, fairness, service performance, and legitimacy. This is the Y axis position.\n0.0–0.2 = routine, low-stakes\n0.2–0.4 = operational, some consequence if it fails\n0.4–0.6 = important, meaningful impact on outcomes\n0.6–0.8 = high-impact, significant consequence\n0.8–1.0 = critical, failure would seriously damage outcomes or trust"
+        },
+        "owner": {
+          "type": "string",
+          "default": "",
+          "description": "Team, role, or individual responsible for this element. E.g. 'Case Management Team', 'DWP Digital', 'HMCTS'."
+        },
+        "organisation": {
+          "type": "string",
+          "default": "",
+          "description": "The organisation that owns or operates this element. E.g. 'DWP', 'DVLA', 'NHS', 'HMCTS', 'Police'. Used for cross-boundary filtering."
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "description": "Free-form labels for filtering and grouping. E.g. ['ai', 'citizen-facing', 'paper-based', 'real-time']."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "planned", "deprecated", "review"],
+          "default": "active",
+          "description": "Current status of this element:\n- 'active': in production or live use\n- 'planned': not yet built or deployed\n- 'deprecated': being phased out\n- 'review': under review or uncertain"
+        },
+        "confidenceScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.7,
+          "description": "How confident you are in the accuracy of this node's position and data. 1.0 = very confident (well-documented system), 0.5 = moderate (some assumptions made), 0.2 = low (limited public information)."
+        },
+        "notes": {
+          "type": "string",
+          "default": "",
+          "description": "Additional notes, caveats, or context. Useful for flagging assumptions, known issues, or areas of uncertainty."
+        },
+        "overlays": {
+          "type": "object",
+          "default": {},
+          "description": "Optional visual overlay flags (currently not used in the UI but preserved in the data).",
+          "properties": {
+            "orgBoundaries":    { "type": "boolean" },
+            "pathway":          { "type": "boolean" },
+            "frictionPoints":   { "type": "boolean" },
+            "policyConstraints":{ "type": "boolean" },
+            "dataQuality":      { "type": "boolean" }
+          },
+          "additionalProperties": false
+        },
+        "riskFlags": {
+          "type": "array",
+          "default": [],
+          "description": "Risk flags. Leave as empty array [] — the app computes these automatically.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id":          { "type": "string" },
+              "type":        { "type": "string" },
+              "description": { "type": "string" },
+              "severity":    { "type": "string", "enum": ["low", "medium", "high", "critical"] }
+            }
+          }
+        },
+        "opportunities": {
+          "type": "array",
+          "default": [],
+          "description": "Automation or improvement opportunities. Leave as empty array [] for now.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id":          { "type": "string" },
+              "type":        { "type": "string" },
+              "description": { "type": "string" },
+              "impact":      { "type": "string", "enum": ["low", "medium", "high"] }
+            }
+          }
+        },
+        "selected": {
+          "type": "boolean",
+          "default": false,
+          "description": "Internal UI state. Always set to false."
+        }
+      }
+    },
+
+    "Edge": {
+      "type": "object",
+      "required": ["id", "source", "target"],
+      "additionalProperties": true,
+      "description": "A directed relationship between two nodes.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for this edge. E.g. 'edge_1' or 'evidence_to_decision_1'. Must be unique across all edges."
+        },
+        "source": {
+          "type": "string",
+          "description": "The id of the node this relationship originates from."
+        },
+        "target": {
+          "type": "string",
+          "description": "The id of the node this relationship points to."
+        },
+        "type": {
+          "type": "string",
+          "const": "relationship",
+          "default": "relationship",
+          "description": "ReactFlow edge type. Always 'relationship'."
+        },
+        "data": { "$ref": "#/definitions/EdgeData" },
+        "markerEnd": {
+          "type": "object",
+          "description": "Arrow marker. Optional — defaults to a standard arrowhead.",
+          "properties": {
+            "type":   { "type": "string", "const": "arrowclosed" },
+            "width":  { "type": "number" },
+            "height": { "type": "number" }
+          }
+        }
+      }
+    },
+
+    "EdgeData": {
+      "type": "object",
+      "required": ["relationshipType"],
+      "additionalProperties": false,
+      "description": "The semantic data for an edge.",
+      "properties": {
+        "relationshipType": {
+          "type": "string",
+          "enum": ["informs", "constrains", "triggers", "transfersTo", "reviews", "escalatesTo"],
+          "description": "The nature of the relationship. Choose the best fit:\n- 'informs': provides information, evidence, or signals that shape another element\n- 'constrains': sets rules, limits, or conditions another element must operate within\n- 'triggers': an event or completion here causes another element to begin or activate\n- 'transfersTo': passes work, responsibility, or an actionable result to another element\n- 'reviews': checks, verifies, or quality-assures another element's output\n- 'escalatesTo': passes work onward when complexity or exceptions require higher-level handling"
+        },
+        "description": {
+          "type": "string",
+          "default": "",
+          "description": "Optional free-text description of this specific relationship."
+        },
+        "interoperabilityNote": {
+          "type": "string",
+          "default": "",
+          "description": "Optional note about how data or work passes between the two elements — e.g. API, manual handoff, shared database, paper form."
+        }
+      }
+    }
+  }
+}

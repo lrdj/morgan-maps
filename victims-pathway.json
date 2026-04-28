@@ -1,0 +1,710 @@
+{
+  "version": "1.0",
+  "name": "Victims Pathway",
+  "exportedAt": "2026-04-05T00:00:00.000Z",
+  "nodes": [
+    {
+      "id": "vp1",
+      "type": "interface",
+      "position": { "x": 88, "y": 433 },
+      "data": {
+        "title": "999 / 101 Police Reporting",
+        "description": "Primary routes for victims to report a crime to the police. 999 for emergencies in progress; 101 for non-emergency reports. Some forces also accept online reporting for lower-level crimes. First formal point of contact between victim and the criminal justice system.",
+        "nodeType": "interface",
+        "owner": "Local Police Force",
+        "organisation": "Police (43 forces + BTP)",
+        "tags": ["citizen-facing", "reporting", "channel", "telephone"],
+        "status": "active",
+        "confidenceScore": 0.9,
+        "notes": "Call handling quality varies by force. Not all victims report — dark figure of crime is significant. Some groups (e.g. victims of domestic abuse, sexual violence) face particular barriers to reporting. Online reporting availability is inconsistent across forces.",
+        "automationLevel": 0.14,
+        "criticalityLevel": 0.48,
+        "overlays": { "frictionPoints": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "vp2",
+      "type": "execution",
+      "position": { "x": 16, "y": 100 },
+      "data": {
+        "title": "Police Initial Response & Investigation",
+        "description": "Police attendance, scene preservation, evidence gathering, witness identification, and ongoing criminal investigation. Officers have obligations under the Victims' Code to refer victims to support and keep them informed of case progress. Investigation quality and resource vary significantly by force and offence type.",
+        "nodeType": "execution",
+        "owner": "Local Police Force",
+        "organisation": "Police",
+        "tags": ["investigation", "human-judgement", "evidence-gathering", "statutory"],
+        "status": "active",
+        "confidenceScore": 0.82,
+        "notes": "Significant variation in investigation quality between forces and by offence type. Domestic abuse and sexual offences have dedicated units in most forces (DAHU/SOIT). Under-resourcing means many investigations are discontinued due to capacity rather than evidential failings. Section 28 pre-recorded cross-examination adds complexity.",
+        "automationLevel": 0.08,
+        "criticalityLevel": 0.85,
+        "overlays": {},
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "vp3",
+      "type": "decision",
+      "position": { "x": 40, "y": 217 },
+      "data": {
+        "title": "Victim Needs Assessment",
+        "description": "Statutory obligation under the Victims' Code for police to identify victim vulnerability, assess support needs, and refer to appropriate services. Determines eligibility for enhanced entitlements (e.g. personal statement, special measures). Should be completed at first contact and updated as case progresses.",
+        "nodeType": "decision",
+        "owner": "Investigating Officer",
+        "organisation": "Police",
+        "tags": ["needs-assessment", "statutory", "human-judgement", "vulnerability"],
+        "status": "active",
+        "confidenceScore": 0.68,
+        "notes": "Compliance with this obligation varies significantly. Inspections by HMICFRS have found inconsistent practice. Victims are not always told of their Code entitlements. Assessment often not updated as vulnerability changes. Quality depends heavily on officer training and caseload.",
+        "automationLevel": 0.10,
+        "criticalityLevel": 0.72,
+        "overlays": { "frictionPoints": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "vp4",
+      "type": "interface",
+      "position": { "x": 136, "y": 343 },
+      "data": {
+        "title": "Victim Support / ISVA / IDVA",
+        "description": "Funded emotional and practical support for victims. Independent Sexual Violence Advisers (ISVAs) support victims of rape and serious sexual assault. Independent Domestic Violence Advisers (IDVAs) support high-risk domestic abuse victims. General victim support provided by Victim Support charity and PCCs' commissioned services. Referral typically from police or self-referral.",
+        "nodeType": "interface",
+        "owner": "Commissioned Support Providers (various)",
+        "organisation": "PCC-funded / Victim Support / charities",
+        "tags": ["support", "ISVA", "IDVA", "third-sector", "commissioned"],
+        "status": "active",
+        "confidenceScore": 0.72,
+        "notes": "Provision varies significantly by area — determined by PCC commissioning decisions. ISVAs are unevenly distributed; some areas have significant waits or gaps. Not all victims are offered or accept referral. ISVAs/IDVAs are not statutory — their existence depends on funding cycles.",
+        "automationLevel": 0.18,
+        "criticalityLevel": 0.58,
+        "overlays": { "orgBoundaries": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "vp5",
+      "type": "interface",
+      "position": { "x": -8, "y": 55 },
+      "data": {
+        "title": "SARC (Sexual Assault Referral Centre)",
+        "description": "Specialist centres providing forensic medical examination, immediate healthcare, and support for victims of rape and sexual assault. Victims can self-refer or be referred by police. Forensic samples can be taken and stored even if the victim does not wish to report to police immediately (third-party reporting).",
+        "nodeType": "interface",
+        "owner": "NHS (usually commissioned by NHS England / ICB)",
+        "organisation": "NHS",
+        "tags": ["sexual-violence", "forensic", "medical", "specialist", "cross-boundary"],
+        "status": "active",
+        "confidenceScore": 0.82,
+        "notes": "There are around 50 SARCs in England and Wales. Not all are 24/7. Waiting times for appointments can mean evidence is lost. 'Stealthing' and drug-facilitated assault present particular evidence challenges. SARC and police forensic processes must be carefully coordinated to preserve evidential integrity.",
+        "automationLevel": 0.06,
+        "criticalityLevel": 0.90,
+        "overlays": { "orgBoundaries": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "vp6",
+      "type": "decision",
+      "position": { "x": 112, "y": 28 },
+      "data": {
+        "title": "MARAC (Multi-Agency Risk Assessment Conference)",
+        "description": "Regular local multi-agency meetings to share information and coordinate action for high-risk domestic abuse victims. Attended by police, local authority, IDVA, health, probation, housing, and other agencies. MARAC produces a safety plan for the victim. Referral triggered by DASH (Domestic Abuse, Stalking and Honour-based violence) risk assessment hitting the threshold.",
+        "nodeType": "decision",
+        "owner": "MARAC Chair (usually police or LA)",
+        "organisation": "Multi-agency (Police / LA / NHS / Probation)",
+        "tags": ["domestic-abuse", "multi-agency", "risk-management", "cross-boundary"],
+        "status": "active",
+        "confidenceScore": 0.78,
+        "notes": "Around 80,000 cases discussed at MARAC annually in England and Wales. Effectiveness depends on quality of information sharing and agency attendance. Not all high-risk victims are identified or referred. MARAC has no statutory basis — it operates through memoranda of understanding.",
+        "automationLevel": 0.06,
+        "criticalityLevel": 0.93,
+        "overlays": { "orgBoundaries": true, "policyConstraints": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "vp7",
+      "type": "execution",
+      "position": { "x": 136, "y": 82 },
+      "data": {
+        "title": "ABE Interview & Special Measures",
+        "description": "Achieving Best Evidence (ABE) is the framework for video-recorded investigative interviews with vulnerable or intimidated witnesses (children, victims of sexual offences, those with mental health conditions). The recording may be used as the witness's evidence-in-chief at trial. Special measures include live video links, screens, intermediaries, and section 28 pre-recorded cross-examination.",
+        "nodeType": "execution",
+        "owner": "Trained Police Officers / SOIT officers",
+        "organisation": "Police / HMCTS",
+        "tags": ["vulnerable-witnesses", "evidence", "statutory", "ABE", "special-measures"],
+        "status": "active",
+        "confidenceScore": 0.78,
+        "notes": "Section 28 (pre-recorded cross-examination) has been rolled out nationally but capacity constraints remain. ABE interview quality depends heavily on officer training. Police forces vary in availability of specialist SOIT (Sexual Offences Investigation Trained) officers. Poor ABE interviews can undermine prosecutions.",
+        "automationLevel": 0.08,
+        "criticalityLevel": 0.87,
+        "overlays": { "policyConstraints": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "vp8",
+      "type": "decision",
+      "position": { "x": 16, "y": 10 },
+      "data": {
+        "title": "CPS Review & Charging Decision",
+        "description": "Crown Prosecution Service reviews the police case file and decides whether to charge. Applies the Full Code Test: sufficient evidence (realistic prospect of conviction) and the public interest. For serious cases (rape, domestic abuse, child abuse) police must refer to CPS before charging. CPS can request further investigation. Decision to charge or not to charge is the gateway to prosecution.",
+        "nodeType": "decision",
+        "owner": "Crown Prosecutor",
+        "organisation": "Crown Prosecution Service (CPS)",
+        "tags": ["charging", "prosecution", "legal", "CPS", "cross-boundary"],
+        "status": "active",
+        "confidenceScore": 0.85,
+        "notes": "Pre-charge referrals from police to CPS have increased. Victims have a right to be informed of charging decisions and reasons. Evidential threshold requires 'realistic prospect of conviction' — not balance of probabilities. Conviction rates for rape remain significantly lower than other offence types. CPS has specialist rape and serious sexual offence units (RASSO).",
+        "automationLevel": 0.05,
+        "criticalityLevel": 0.95,
+        "overlays": { "policyConstraints": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "vp9",
+      "type": "decision",
+      "position": { "x": 376, "y": 73 },
+      "data": {
+        "title": "Victim's Right to Review (VRR)",
+        "description": "Statutory right for victims to seek a review of CPS decisions not to charge, to discontinue a case, or to offer no evidence. Victim requests a review, which is conducted by a CPS area not involved in the original decision. Victim is informed of outcome. Separate police VRR scheme covers decisions not to refer to CPS.",
+        "nodeType": "decision",
+        "owner": "CPS Review Unit",
+        "organisation": "CPS / Police",
+        "tags": ["VRR", "review", "statutory", "victim-rights"],
+        "status": "active",
+        "confidenceScore": 0.80,
+        "notes": "Introduced in 2013 following the Leveson Review. Victims are not always told of this right. Take-up is relatively low. Original decision is upheld in the majority of reviews. Decision to reinstate prosecution is rare but does occur. The VRR does not give victims a veto over decisions — it is a review mechanism only.",
+        "automationLevel": 0.05,
+        "criticalityLevel": 0.88,
+        "overlays": { "policyConstraints": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "vp10",
+      "type": "execution",
+      "position": { "x": 256, "y": 163 },
+      "data": {
+        "title": "Witness Care Unit",
+        "description": "Joint police/CPS units that manage the needs of victims and witnesses from charge to conclusion of trial. Responsible for notifying victims of hearings, explaining the court process, arranging special measures applications, and providing updates on case progress. Single point of contact for victims once a case is charged.",
+        "nodeType": "execution",
+        "owner": "Witness Care Officers (Police/CPS joint)",
+        "organisation": "Police / CPS",
+        "tags": ["witness-care", "statutory", "pre-trial", "cross-boundary"],
+        "status": "active",
+        "confidenceScore": 0.75,
+        "notes": "WCU capacity and quality varies. Inspections have found victims sometimes receive poor or no contact from their WCU. High caseloads are a persistent issue. Victims often report feeling confused and unsupported during the court process. The WCU is the main mechanism for delivering Victims' Code entitlements pre-trial.",
+        "automationLevel": 0.22,
+        "criticalityLevel": 0.78,
+        "overlays": { "frictionPoints": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "vp11",
+      "type": "decision",
+      "position": { "x": -32, "y": -8 },
+      "data": {
+        "title": "Crown / Magistrates Court (HMCTS)",
+        "description": "Trial and sentencing hearing. Summary offences heard in magistrates courts; indictable offences in Crown Court (judge and jury). Victim attends to give evidence (live or via special measures). Court determines guilt and, if convicted, sentence. All hearings listed and managed by HMCTS.",
+        "nodeType": "decision",
+        "owner": "Judiciary",
+        "organisation": "HMCTS / MoJ",
+        "tags": ["trial", "judicial", "external", "cross-boundary", "legal"],
+        "status": "active",
+        "confidenceScore": 0.88,
+        "notes": "Crown Court backlog has been severe since COVID-19, with cases listed years ahead. Waiting times mean victims experience prolonged uncertainty and distress. Trials can collapse due to witness availability, disclosure failures, or late guilty pleas. Victims have no party status in criminal proceedings — the prosecution is brought by the state.",
+        "automationLevel": 0.04,
+        "criticalityLevel": 0.97,
+        "overlays": { "orgBoundaries": true, "policyConstraints": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "vp12",
+      "type": "interface",
+      "position": { "x": 184, "y": 127 },
+      "data": {
+        "title": "Victim Personal Statement (VPS)",
+        "description": "Written statement by the victim describing the physical, emotional, psychological, financial, and social impact of the crime. Read out or summarised at sentencing hearings. Victims can choose to read the VPS themselves. Helps the court understand the human impact of the offence when determining sentence.",
+        "nodeType": "interface",
+        "owner": "Victim (drafted with police / WCU support)",
+        "organisation": "Police / HMCTS",
+        "tags": ["victim-rights", "statutory", "sentencing", "citizen-facing"],
+        "status": "active",
+        "confidenceScore": 0.82,
+        "notes": "VPS was made a statutory entitlement under the Victims' Code. Not all victims are offered the opportunity. Victims sometimes report not knowing they could read it aloud. A business VPS is also available for business crime victims. Courts must take the VPS into account but it does not determine sentence — that remains a matter for the judge.",
+        "automationLevel": 0.06,
+        "criticalityLevel": 0.82,
+        "overlays": {},
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "vp13",
+      "type": "interface",
+      "position": { "x": 88, "y": 253 },
+      "data": {
+        "title": "Witness Service (at court)",
+        "description": "Voluntary sector service (provided by Victim Support under contract) located in courts providing practical and emotional support to witnesses on the day of trial. Helps victims understand court procedures, accompanies them through the building, and provides a waiting area away from defendants and their supporters.",
+        "nodeType": "interface",
+        "owner": "Victim Support (contracted by MoJ)",
+        "organisation": "Victim Support / MoJ",
+        "tags": ["court-support", "voluntary-sector", "contracted", "citizen-facing"],
+        "status": "active",
+        "confidenceScore": 0.85,
+        "notes": "The Witness Service has been contracted by MoJ and is present in all Crown and magistrates courts in England and Wales. Does not provide legal advice. Funding pressures on Victim Support have periodically threatened service continuity. Service quality is generally positive in victim satisfaction surveys.",
+        "automationLevel": 0.08,
+        "criticalityLevel": 0.68,
+        "overlays": { "orgBoundaries": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "vp14",
+      "type": "interface",
+      "position": { "x": 400, "y": 460 },
+      "data": {
+        "title": "CICA Compensation Application",
+        "description": "Criminal Injuries Compensation Authority (CICA) processes applications from victims of violent crime for government compensation. Victims must report the crime to police and cooperate with investigation. Awards made from the Criminal Injuries Compensation Scheme (tariff-based). Entirely separate from the criminal justice process — conviction is not required.",
+        "nodeType": "interface",
+        "owner": "Criminal Injuries Compensation Authority",
+        "organisation": "CICA / MoJ",
+        "tags": ["compensation", "citizen-facing", "financial", "statutory"],
+        "status": "active",
+        "confidenceScore": 0.85,
+        "notes": "Applications must be made within 2 years of the offence (with limited exceptions). Awards are based on a fixed tariff, not individual loss. Around 30,000 decisions per year. Victims of domestic abuse or child abuse face particular evidential challenges. The scheme covers violent crime only — fraud, for example, is excluded. Awards can be appealed to the First-tier Tribunal.",
+        "automationLevel": 0.42,
+        "criticalityLevel": 0.45,
+        "overlays": {},
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "vp15",
+      "type": "execution",
+      "position": { "x": 208, "y": 307 },
+      "data": {
+        "title": "Victim Contact Scheme (Probation / HMPPS)",
+        "description": "Statutory scheme managed by the Probation Service giving victims of serious violent or sexual offences the right to be kept informed about the management of the offender's sentence, make representations about licence conditions on release, and be notified of key events (parole hearings, release, recall). Managed by Victim Liaison Officers.",
+        "nodeType": "execution",
+        "owner": "Victim Liaison Officer",
+        "organisation": "HMPPS / Probation Service",
+        "tags": ["post-conviction", "probation", "statutory", "victim-rights", "notification"],
+        "status": "active",
+        "confidenceScore": 0.78,
+        "notes": "Covers sentences of 12 months or more for specified violent or sexual offences. Victims must opt in. Victim Liaison Officer capacity is limited — caseloads are high. Victims can make representations to the Parole Board about licence conditions. The scheme does not give victims a veto over release decisions.",
+        "automationLevel": 0.15,
+        "criticalityLevel": 0.62,
+        "overlays": {},
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "vp16",
+      "type": "evidence",
+      "position": { "x": 304, "y": 28 },
+      "data": {
+        "title": "Victims' Code of Practice",
+        "description": "Statutory Code (made under the Domestic Violence, Crime and Victims Act 2004) setting out the minimum standards of service victims are entitled to receive from criminal justice agencies. Covers police, CPS, HMCTS, HMPPS, Parole Board, and CICA. Specifies 12 rights including the right to information, support, special measures, and the VRR. Revised and strengthened in 2020.",
+        "nodeType": "evidence",
+        "owner": "Ministry of Justice",
+        "organisation": "MoJ",
+        "tags": ["policy", "statutory", "legislation", "victim-rights"],
+        "status": "active",
+        "confidenceScore": 0.92,
+        "notes": "The Code confers entitlements but no direct legal remedy for breach — victims cannot sue agencies for non-compliance. The Victims' Commissioner oversees compliance. The Victims and Prisoners Act 2024 strengthened the legislative basis for the Code. Compliance across agencies is inconsistent and not systematically measured.",
+        "automationLevel": 0.18,
+        "criticalityLevel": 0.93,
+        "overlays": { "policyConstraints": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "vp17",
+      "type": "execution",
+      "position": { "x": 664, "y": 370 },
+      "data": {
+        "title": "Force Crime Recording (NICHE / Athena / STORM)",
+        "description": "Police force crime recording systems where crimes are logged, investigated, and managed. Major systems include NICHE (widely used), Athena (shared by several eastern forces), and STORM (call-handling). These hold the live investigation record, evidence logs, actions, and case file. Crime recording is governed by the Home Office Counting Rules.",
+        "nodeType": "execution",
+        "owner": "Local Police Force IT",
+        "organisation": "Police / Home Office",
+        "tags": ["crime-recording", "IT-systems", "case-management", "Home-Office"],
+        "status": "active",
+        "confidenceScore": 0.78,
+        "notes": "Each of the 43 forces largely operates its own system. Lack of national interoperability means cross-force investigations are operationally complex. HMICFRS inspections have found persistent under-recording of crime. The shift to national systems is slow — forces are reluctant to cede control. Crime recording decisions are audited by the HMICFRS.",
+        "automationLevel": 0.62,
+        "criticalityLevel": 0.55,
+        "overlays": { "dataQuality": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "vp18",
+      "type": "evidence",
+      "position": { "x": 880, "y": 307 },
+      "data": {
+        "title": "Police National Computer (PNC) & PND",
+        "description": "Police National Computer holds records of arrests, charges, convictions, cautions, and wanted/missing persons for all UK forces. Police National Database (PND) holds intelligence data including soft intelligence, images, and force records. Both are used to inform risk assessment and investigation decisions in victim-related cases.",
+        "nodeType": "evidence",
+        "owner": "Home Office / NPCC",
+        "organisation": "Home Office / Police",
+        "tags": ["data", "national", "intelligence", "cross-boundary", "automated"],
+        "status": "active",
+        "confidenceScore": 0.85,
+        "notes": "PNC records are used in bail decisions, charging, and sentencing. Data quality issues (historic backlogs of records to be weeded) have been a long-standing concern. Migration to the Law Enforcement Data Service (LEDS) is ongoing. Access is controlled and audited.",
+        "automationLevel": 0.80,
+        "criticalityLevel": 0.65,
+        "overlays": {},
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "vp19",
+      "type": "execution",
+      "position": { "x": 280, "y": 397 },
+      "data": {
+        "title": "NHS Talking Therapies / Mental Health Referral",
+        "description": "Referral of victims to NHS-funded psychological support, including NHS Talking Therapies (formerly IAPT) for anxiety and depression, and specialist trauma services for complex presentations. Referrals can come from GP, police, ISVA/IDVA, or be self-referred. Victims of serious crime frequently present with PTSD, depression, or complex trauma.",
+        "nodeType": "execution",
+        "owner": "GP / ICB commissioned services",
+        "organisation": "NHS",
+        "tags": ["mental-health", "NHS", "cross-boundary", "trauma", "therapy"],
+        "status": "active",
+        "confidenceScore": 0.7,
+        "notes": "NHS Talking Therapies is not specifically designed for trauma victims — waiting lists and limited trauma-informed capacity mean victims often do not get appropriate support. Specialist trauma therapy is under-resourced. Court proceedings can actively impede therapy — both police and CPS have at times advised victims not to begin therapy before trial, for fear of 'contaminating' evidence.",
+        "automationLevel": 0.28,
+        "criticalityLevel": 0.52,
+        "overlays": { "orgBoundaries": true, "frictionPoints": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    }
+  ],
+  "edges": [
+    {
+      "id": "vpe1",
+      "source": "vp1",
+      "target": "vp2",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "triggers",
+        "description": "Report to police triggers initial police response and investigation",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "vpe2",
+      "source": "vp2",
+      "target": "vp17",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "triggers",
+        "description": "Crime is recorded on the force crime recording system at initial report or on attendance",
+        "interoperabilityNote": "Recording obligation under Home Office Counting Rules. Quality and timeliness varies by force."
+      }
+    },
+    {
+      "id": "vpe3",
+      "source": "vp2",
+      "target": "vp3",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "triggers",
+        "description": "Police investigation triggers victim needs assessment under the Victims' Code",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "vpe4",
+      "source": "vp2",
+      "target": "vp5",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "transfersTo",
+        "description": "Sexual offences investigations trigger referral to SARC for forensic medical examination and support",
+        "interoperabilityNote": "Police to NHS. No structured data exchange — verbal referral and paper form. Coordination between SOIT officer and SARC is critical to preserve evidence."
+      }
+    },
+    {
+      "id": "vpe5",
+      "source": "vp2",
+      "target": "vp6",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "escalatesTo",
+        "description": "High-risk domestic abuse cases referred to MARAC for multi-agency safety planning",
+        "interoperabilityNote": "DASH risk assessment tool used to determine threshold. Police are usually the referring agency but others can refer."
+      }
+    },
+    {
+      "id": "vpe6",
+      "source": "vp2",
+      "target": "vp7",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "triggers",
+        "description": "Vulnerable or intimidated witness identified during investigation triggers ABE interview and special measures application",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "vpe7",
+      "source": "vp2",
+      "target": "vp8",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "transfersTo",
+        "description": "Completed police investigation file transferred to CPS for charging decision",
+        "interoperabilityNote": "File submitted via CMS/DCS (digital case management). Quality and completeness of file is a persistent issue — under-resourced investigations produce inadequate files."
+      }
+    },
+    {
+      "id": "vpe8",
+      "source": "vp3",
+      "target": "vp4",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "triggers",
+        "description": "Needs assessment triggers referral to appropriate victim support service (ISVA, IDVA, Victim Support)",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "vpe9",
+      "source": "vp7",
+      "target": "vp8",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "informs",
+        "description": "ABE interview recording and special measures material forms part of the evidence file reviewed by CPS",
+        "interoperabilityNote": "Recorded interview passed to CPS as part of case file. Poor interview technique or leading questions can result in CPS declining to use the recording."
+      }
+    },
+    {
+      "id": "vpe10",
+      "source": "vp16",
+      "target": "vp3",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "constrains",
+        "description": "Victims' Code requires police to conduct a needs assessment and offer enhanced entitlements to vulnerable victims",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "vpe11",
+      "source": "vp16",
+      "target": "vp8",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "constrains",
+        "description": "Victims' Code requires CPS to inform victims of charging decisions and reasons, and to offer meetings with the prosecutor",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "vpe12",
+      "source": "vp16",
+      "target": "vp10",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "constrains",
+        "description": "Victims' Code sets out the minimum contact obligations for Witness Care Units regarding updates and hearing notifications",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "vpe13",
+      "source": "vp8",
+      "target": "vp11",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "triggers",
+        "description": "CPS charging decision triggers court proceedings — case is listed at magistrates or Crown Court",
+        "interoperabilityNote": "CPS submits charge to HMCTS. Court listing managed by HMCTS — CPS and defence have limited control over listing dates."
+      }
+    },
+    {
+      "id": "vpe14",
+      "source": "vp8",
+      "target": "vp9",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "triggers",
+        "description": "CPS decision not to charge or to discontinue triggers victim's right to request a review under the VRR scheme",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "vpe15",
+      "source": "vp8",
+      "target": "vp10",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "triggers",
+        "description": "Charging decision triggers handover to Witness Care Unit who take over as the victim's point of contact",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "vpe16",
+      "source": "vp10",
+      "target": "vp11",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "informs",
+        "description": "Witness Care Unit prepares victim for court, arranges special measures, and ensures attendance — feeds directly into the court hearing",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "vpe17",
+      "source": "vp12",
+      "target": "vp11",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "informs",
+        "description": "Victim Personal Statement is submitted to court and read at sentencing to inform the judge's sentencing decision",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "vpe18",
+      "source": "vp13",
+      "target": "vp11",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "reviews",
+        "description": "Witness Service provides in-court support and helps victim navigate the court process on the day",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "vpe19",
+      "source": "vp11",
+      "target": "vp15",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "triggers",
+        "description": "Conviction resulting in a qualifying custodial sentence triggers notification and opt-in to the Victim Contact Scheme",
+        "interoperabilityNote": "Court notifies HMPPS of sentence. Probation Victim Liaison Officer contacts victim. Significant delays in initial contact have been reported."
+      }
+    },
+    {
+      "id": "vpe20",
+      "source": "vp11",
+      "target": "vp14",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "informs",
+        "description": "Trial outcome informs CICA application — conviction is not required but the offence must have been reported to police and police must confirm the crime",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "vpe21",
+      "source": "vp4",
+      "target": "vp19",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "transfersTo",
+        "description": "ISVA/IDVA identifies mental health needs and refers victim to NHS Talking Therapies or specialist trauma services",
+        "interoperabilityNote": "Referral pathway from third-sector to NHS. No integrated referral system — manual letter or GP referral required. ISVA may advise victim to wait until criminal proceedings conclude before commencing trauma therapy."
+      }
+    },
+    {
+      "id": "vpe22",
+      "source": "vp17",
+      "target": "vp18",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "informs",
+        "description": "Force crime recording feeds relevant records to the Police National Computer and Police National Database",
+        "interoperabilityNote": "Automated feeds for charges, convictions, and cautions. Intelligence records require manual PND submission. Timeliness and completeness of PNC updates varies."
+      }
+    },
+    {
+      "id": "vpe23",
+      "source": "vp18",
+      "target": "vp2",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "informs",
+        "description": "PNC and PND records inform police investigation — prior offending, bail conditions, intelligence, and suspect identity checks",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "vpe24",
+      "source": "vp5",
+      "target": "vp2",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "informs",
+        "description": "SARC forensic findings and victim account inform the police investigation",
+        "interoperabilityNote": "Forensic samples and medical notes shared with police where victim consents to report. Third-party reporting allows samples to be stored without immediate disclosure to police."
+      }
+    }
+  ]
+}
