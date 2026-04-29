@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"\\\\.tsx$\")",
+      "Bash(cp /Users/dug/Sites/morgan-maps/public/schema.json /Users/dug/Sites/morgan-maps/morgan-maps-express/public/schema.json)",
+      "Bash(cp /Users/dug/Sites/morgan-maps/public/llm-guide.md /Users/dug/Sites/morgan-maps/morgan-maps-express/public/llm-guide.md)",
+      "Bash(cp /Users/dug/Sites/morgan-maps/public/social/morgan-map-linkedin.png /Users/dug/Sites/morgan-maps/morgan-maps-express/public/social/morgan-map-linkedin.png)",
+      "Bash(cp /Users/dug/Sites/morgan-maps/dvla-drivers-medical.json /Users/dug/Sites/morgan-maps/morgan-maps-express/public/dvla-drivers-medical.json)",
+      "Bash(cp /Users/dug/Sites/morgan-maps/victims-pathway.json /Users/dug/Sites/morgan-maps/morgan-maps-express/public/victims-pathway.json)",
+      "Bash(npm install *)",
+      "Bash(PORT=5174 node *)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:5174/)",
+      "Bash(curl -s http://localhost:5174/)",
+      "Bash(curl -s -o /dev/null -w \"JS HTTP %{http_code}\\\\n\" http://localhost:5174/js/app.js)",
+      "Bash(curl -s -o /dev/null -w \"CSS HTTP %{http_code}\\\\n\" http://localhost:5174/css/styles.css)",
+      "Bash(curl -s -o /dev/null -w \"schema HTTP %{http_code}\\\\n\" http://localhost:5174/schema.json)",
+      "Bash(node --check canvas.js)",
+      "Bash(node --check /Users/dug/Sites/morgan-maps/morgan-maps-express/public/js/canvas.js)",
+      "Bash(curl -s -o /dev/null -w \"JS app HTTP %{http_code}\\\\n\" http://localhost:5174/js/app.js)",
+      "Bash(curl -s -o /dev/null -w \"JS canvas HTTP %{http_code}\\\\n\" http://localhost:5174/js/canvas.js)",
+      "Bash(curl -s -o /dev/null -w \"JS state HTTP %{http_code}\\\\n\" http://localhost:5174/js/state.js)",
+      "Bash(curl -s -o /dev/null -w \"JS toolbar HTTP %{http_code}\\\\n\" http://localhost:5174/js/toolbar.js)",
+      "Bash(curl -s -o /dev/null -w \"JS panels/nodeDetail HTTP %{http_code}\\\\n\" http://localhost:5174/js/panels/nodeDetail.js)",
+      "Bash(curl -s http://localhost:5174/js/app.js)",
+      "Bash(curl -s http://localhost:5174/js/state.js)"
+    ]
+  }
+}

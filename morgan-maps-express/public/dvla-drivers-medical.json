@@ -1,0 +1,699 @@
+{
+  "version": "1.0",
+  "name": "DVLA Drivers Medical Service",
+  "exportedAt": "2026-04-05T00:00:00.000Z",
+  "nodes": [
+    {
+      "id": "dm1",
+      "type": "interface",
+      "position": { "x": 340, "y": 595 },
+      "data": {
+        "title": "GOV.UK Medical Notification",
+        "description": "Online self-declaration service on GOV.UK allowing drivers to notify DVLA of a medical condition, disability, or relevant change in health. Covers a wide range of conditions via structured digital forms.",
+        "nodeType": "interface",
+        "owner": "DVLA Digital Services",
+        "organisation": "DVLA",
+        "tags": ["citizen-facing", "digital", "self-declaration"],
+        "status": "active",
+        "confidenceScore": 0.9,
+        "notes": "Introduced as part of DVLA's digital transformation. Not all conditions can be notified online; some require paper forms. Does not cover vocational licence medical declarations.",
+        "automationLevel": 0.35,
+        "criticalityLevel": 0.3,
+        "overlays": { "frictionPoints": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "dm2",
+      "type": "interface",
+      "position": { "x": -20, "y": 370 },
+      "data": {
+        "title": "Condition-Specific Medical Questionnaire",
+        "description": "Paper or PDF questionnaires sent to drivers to gather information about their medical condition. Condition-specific forms exist for epilepsy, diabetes, heart conditions, visual disorders, sleep disorders, and many others. Driver returns completed form to DVLA Swansea.",
+        "nodeType": "interface",
+        "owner": "Drivers Medical Group",
+        "organisation": "DVLA",
+        "tags": ["paper", "citizen-facing", "questionnaire"],
+        "status": "active",
+        "confidenceScore": 0.85,
+        "notes": "Many questionnaires remain paper-based. Drivers sometimes fail to return them, causing delays. DVLA can revoke a licence for non-response. Digital versions of some forms exist but coverage is partial.",
+        "automationLevel": 0.05,
+        "criticalityLevel": 0.55,
+        "overlays": { "frictionPoints": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "dm3",
+      "type": "interface",
+      "position": { "x": -20, "y": 190 },
+      "data": {
+        "title": "D4 Medical Examination Form",
+        "description": "Statutory medical examination report completed by a registered medical practitioner for vocational licence (Group 2: HGV, bus, coach) applicants and renewals. Includes vision, cardiovascular, neurological, and other assessments. Higher standards apply than for Group 1 licences.",
+        "nodeType": "interface",
+        "owner": "Applicant's GP or DVLA-approved doctor",
+        "organisation": "NHS / Private Medical",
+        "tags": ["paper", "vocational", "Group-2", "cross-boundary", "medical-exam"],
+        "status": "active",
+        "confidenceScore": 0.9,
+        "notes": "Cost of D4 exam falls on the driver (not NHS-funded). Average cost £50–£100. Some GPs refuse to complete them. Delays common when booked through private providers.",
+        "automationLevel": 0.05,
+        "criticalityLevel": 0.75,
+        "overlays": { "orgBoundaries": true, "frictionPoints": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "dm4",
+      "type": "interface",
+      "position": { "x": 40, "y": 307 },
+      "data": {
+        "title": "Third-Party Medical Notification",
+        "description": "Notifications received from police (via KADOE), courts, coroners, NHS clinicians, DVSA, or other government agencies about a driver's fitness to drive. Healthcare professionals have a duty to advise patients to notify DVLA but no statutory duty to notify DVLA directly (with limited exceptions).",
+        "nodeType": "interface",
+        "owner": "Various (Police, NHS, Courts)",
+        "organisation": "Multi-agency",
+        "tags": ["third-party", "cross-boundary", "notification", "police", "NHS"],
+        "status": "active",
+        "confidenceScore": 0.8,
+        "notes": "KADOE (Knowledge At Date Of Event) is used by police to query the driver record. Courts notify DVLA of disqualifications. NHS clinician notifications are informal and inconsistent — no structured data exchange. Notification quality varies significantly by source.",
+        "automationLevel": 0.1,
+        "criticalityLevel": 0.62,
+        "overlays": { "orgBoundaries": true, "dataQuality": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "dm5",
+      "type": "interface",
+      "position": { "x": 904, "y": 577 },
+      "data": {
+        "title": "Driver Outcome Letter",
+        "description": "Formal written notification to the driver of the licensing decision: licence granted, short-period licence issued, licence refused, or licence revoked. Includes reason for decision and information about the right to appeal to a magistrates court (England and Wales) or sheriff court (Scotland).",
+        "nodeType": "interface",
+        "owner": "Drivers Medical Group",
+        "organisation": "DVLA",
+        "tags": ["citizen-facing", "notification", "decision-outcome"],
+        "status": "active",
+        "confidenceScore": 0.92,
+        "notes": "Letters sent by post. DVLA has explored digital notifications but formal decisions still require paper. Letters sometimes criticised for lacking clarity on appeal routes and timeframes.",
+        "automationLevel": 0.82,
+        "criticalityLevel": 0.32,
+        "overlays": {},
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "dm6",
+      "type": "interface",
+      "position": { "x": 100, "y": 550 },
+      "data": {
+        "title": "DVLA Contact Centre",
+        "description": "Telephone contact centre handling driver enquiries about medical cases, form requests, and progress chasing. Drivers can call to request paper forms, check case status, and seek clarification on decisions.",
+        "nodeType": "interface",
+        "owner": "Customer Services",
+        "organisation": "DVLA",
+        "tags": ["telephone", "citizen-facing", "enquiries"],
+        "status": "active",
+        "confidenceScore": 0.82,
+        "notes": "High call volumes are a known pressure point. Drivers are often unable to get case-specific information due to data protection restrictions. Wait times can be significant. No online case-tracking for medical cases.",
+        "automationLevel": 0.15,
+        "criticalityLevel": 0.35,
+        "overlays": { "frictionPoints": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "dm7",
+      "type": "decision",
+      "position": { "x": 160, "y": 280 },
+      "data": {
+        "title": "Initial Case Triage",
+        "description": "Caseworker assessment of an incoming notification or returned questionnaire. Determines whether the case can be decided based on existing information, requires further medical evidence, or warrants referral to a DVLA Medical Adviser. Straightforward cases (e.g. single confirmed seizure with clear rules) may be decided at this stage.",
+        "nodeType": "decision",
+        "owner": "Drivers Medical Group",
+        "organisation": "DVLA",
+        "tags": ["casework", "triage", "human-judgement"],
+        "status": "active",
+        "confidenceScore": 0.78,
+        "notes": "Caseworkers apply rules from the At a Glance guide. Complex or borderline cases escalated to Medical Advisers. Significant case backlogs reported publicly, leading to extended processing times.",
+        "automationLevel": 0.2,
+        "criticalityLevel": 0.65,
+        "overlays": {},
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "dm8",
+      "type": "decision",
+      "position": { "x": -20, "y": 28 },
+      "data": {
+        "title": "DVLA Medical Adviser Review",
+        "description": "Clinically qualified Medical Adviser (doctor employed by DVLA) reviews complex, borderline, or contested cases. Assesses whether the driver meets the medical standards for the relevant licence group. May request additional specialist reports. Decision is medical opinion that informs the licensing decision.",
+        "nodeType": "decision",
+        "owner": "Medical Adviser",
+        "organisation": "DVLA",
+        "tags": ["medical", "human-judgement", "clinical", "complex-cases"],
+        "status": "active",
+        "confidenceScore": 0.85,
+        "notes": "DVLA Medical Advisers are registered doctors. There is reportedly a shortage of Medical Advisers, which contributes to backlogs. Their opinion is advisory but typically determines the outcome. They do not examine drivers directly.",
+        "automationLevel": 0.05,
+        "criticalityLevel": 0.93,
+        "overlays": { "policyConstraints": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "dm9",
+      "type": "decision",
+      "position": { "x": 136, "y": 55 },
+      "data": {
+        "title": "Licence Decision",
+        "description": "Formal licensing decision made by DVLA on behalf of the Secretary of State for Transport. Outcomes: full licence granted; short-period licence (1, 2, or 3 years); licence refused (new applicant); licence revoked (existing holder). Based on whether driver meets medical standards set out in retained EU law and DVLA policy.",
+        "nodeType": "decision",
+        "owner": "Drivers Medical Group",
+        "organisation": "DVLA",
+        "tags": ["licensing", "human-judgement", "legal", "high-stakes"],
+        "status": "active",
+        "confidenceScore": 0.88,
+        "notes": "Decisions have significant impact on driver's livelihood, especially for vocational licence holders. Drivers have a legal obligation to notify DVLA; failure to do so and driving when unfit is a criminal offence. DVLA can also impose conditions on a licence.",
+        "automationLevel": 0.18,
+        "criticalityLevel": 0.9,
+        "overlays": { "policyConstraints": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "dm10",
+      "type": "decision",
+      "position": { "x": -44, "y": -8 },
+      "data": {
+        "title": "Court Appeal",
+        "description": "Driver may appeal a licence refusal or revocation to a magistrates court (England and Wales) or sheriff court (Scotland). The court can uphold, vary, or reverse DVLA's decision. There is no independent administrative tribunal — the appeal goes directly to the judicial system.",
+        "nodeType": "decision",
+        "owner": "Judicial Panel",
+        "organisation": "HMCTS / Sheriff Court",
+        "tags": ["legal", "judicial", "external", "cross-boundary", "appeal"],
+        "status": "active",
+        "confidenceScore": 0.9,
+        "notes": "No equivalent of DWP's mandatory reconsideration stage — drivers go straight to court. DVLA is legally represented. Medical evidence is central to court hearings. Outcomes vary; courts are not bound by DVLA's Medical Adviser opinion.",
+        "automationLevel": 0.03,
+        "criticalityLevel": 0.97,
+        "overlays": { "orgBoundaries": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "dm11",
+      "type": "execution",
+      "position": { "x": 700, "y": 163 },
+      "data": {
+        "title": "VISTA — Driver Record System",
+        "description": "DVLA's main IT system for driver licensing records. Holds the authoritative record of a driver's licence status, endorsements, medical flags, and history. Case management for medical cases is integrated with or dependent on VISTA. Legacy system with ongoing modernisation work.",
+        "nodeType": "execution",
+        "owner": "IT Operations",
+        "organisation": "DVLA",
+        "tags": ["core-system", "legacy", "driver-record", "IT"],
+        "status": "active",
+        "confidenceScore": 0.8,
+        "notes": "VISTA is one of the oldest government IT systems in active use. Significant ongoing investment in modernisation. Some medical case management functions operate on separate or bolted-on systems. Integration with NHS and police systems is limited.",
+        "automationLevel": 0.65,
+        "criticalityLevel": 0.78,
+        "overlays": {},
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "dm12",
+      "type": "execution",
+      "position": { "x": 1024, "y": 433 },
+      "data": {
+        "title": "Licence Production & Dispatch",
+        "description": "Automated production of the photocard driving licence at DVLA's Swansea facility, followed by postal dispatch to the driver. Covers new licences, renewals, and licences with medical restrictions or short-period validity.",
+        "nodeType": "execution",
+        "owner": "Licence Production",
+        "organisation": "DVLA",
+        "tags": ["automated", "production", "dispatch", "physical"],
+        "status": "active",
+        "confidenceScore": 0.93,
+        "notes": "Production is highly automated. Target turnaround is several days once a decision is made. Address accuracy is a dependency — outdated addresses on VISTA delay delivery.",
+        "automationLevel": 0.92,
+        "criticalityLevel": 0.48,
+        "overlays": {},
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "dm13",
+      "type": "execution",
+      "position": { "x": 460, "y": 73 },
+      "data": {
+        "title": "Licence Revocation Processing",
+        "description": "Administrative process for revoking a driving licence following a medical decision. Updates VISTA, flags the record, notifies the driver, and where relevant notifies the police via the KADOE interface. Driver is legally required to surrender the photocard licence.",
+        "nodeType": "execution",
+        "owner": "Drivers Medical Group",
+        "organisation": "DVLA",
+        "tags": ["revocation", "enforcement", "administrative"],
+        "status": "active",
+        "confidenceScore": 0.82,
+        "notes": "Police are notified so they can act if the driver continues to drive. There is no automated enforcement mechanism — DVLA cannot physically prevent someone from driving. Compliance relies on the driver surrendering the licence voluntarily.",
+        "automationLevel": 0.45,
+        "criticalityLevel": 0.88,
+        "overlays": { "policyConstraints": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "dm14",
+      "type": "execution",
+      "position": { "x": 976, "y": 487 },
+      "data": {
+        "title": "GOV.UK Notify — Driver Communications",
+        "description": "Automated notification service used for some driver communications, including acknowledgement of online submissions. Not yet used for all DVLA medical correspondence; formal decisions still go by post.",
+        "nodeType": "execution",
+        "owner": "GOV.UK Notify / DVLA Digital",
+        "organisation": "GDS / DVLA",
+        "tags": ["automated", "notifications", "digital", "cross-boundary"],
+        "status": "active",
+        "confidenceScore": 0.7,
+        "notes": "GOV.UK Notify is a GDS shared platform. DVLA adoption for medical case communications is partial. Formal legal decision letters are not yet sent digitally.",
+        "automationLevel": 0.88,
+        "criticalityLevel": 0.42,
+        "overlays": { "orgBoundaries": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "dm15",
+      "type": "evidence",
+      "position": { "x": 664, "y": 217 },
+      "data": {
+        "title": "Driver Medical Record",
+        "description": "DVLA's internal record of a driver's medical history for licensing purposes, including notified conditions, previous decisions, questionnaire returns, and correspondence. Held within VISTA or associated case management system.",
+        "nodeType": "evidence",
+        "owner": "Drivers Medical Group",
+        "organisation": "DVLA",
+        "tags": ["data", "medical", "sensitive", "core"],
+        "status": "active",
+        "confidenceScore": 0.82,
+        "notes": "Not a full medical record — contains only information relevant to licensing. Separate from NHS records. Data held under Motor Vehicles (Driving Licences) Regulations 1999 and Road Traffic Act 1988 frameworks.",
+        "automationLevel": 0.62,
+        "criticalityLevel": 0.72,
+        "overlays": { "dataQuality": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "dm16",
+      "type": "evidence",
+      "position": { "x": 256, "y": 73 },
+      "data": {
+        "title": "At a Glance Medical Standards Guide",
+        "description": "DVLA's published guidance document for healthcare professionals and caseworkers, setting out medical standards of fitness to drive for a wide range of conditions. Specifies criteria for Group 1 (car/motorcycle) and Group 2 (vocational) licences. Updated periodically by DVLA Medical Branch.",
+        "nodeType": "evidence",
+        "owner": "DVLA Medical Branch",
+        "organisation": "DVLA",
+        "tags": ["policy", "medical-standards", "guidance", "legislation"],
+        "status": "active",
+        "confidenceScore": 0.95,
+        "notes": "Derived from EU Directive 2006/126/EC (retained in UK law) and supplemented by DVLA policy. Publicly available on GOV.UK. Used by GPs, DVLA caseworkers, and Medical Advisers. Not always kept fully in sync with emerging clinical evidence.",
+        "automationLevel": 0.28,
+        "criticalityLevel": 0.88,
+        "overlays": { "policyConstraints": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "dm17",
+      "type": "evidence",
+      "position": { "x": 16, "y": 100 },
+      "data": {
+        "title": "GP / Specialist Medical Report",
+        "description": "Clinical report from the driver's own GP or a specialist (neurologist, cardiologist, ophthalmologist, etc.) requested by DVLA to support a medical case assessment. May be requested proactively by DVLA or submitted by the driver. Key evidence for Medical Adviser reviews.",
+        "nodeType": "evidence",
+        "owner": "GP Practice / Hospital Specialist",
+        "organisation": "NHS",
+        "tags": ["medical", "third-party", "cross-boundary", "clinical-evidence"],
+        "status": "active",
+        "confidenceScore": 0.72,
+        "notes": "Not NHS-funded when completed for DVLA purposes — GPs may charge a fee, which falls to DVLA. Response times are typically 4–8 weeks and are a major source of delay in medical case processing. Quality and detail of reports varies significantly.",
+        "automationLevel": 0.08,
+        "criticalityLevel": 0.85,
+        "overlays": { "orgBoundaries": true, "dataQuality": true, "frictionPoints": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "dm18",
+      "type": "evidence",
+      "position": { "x": 784, "y": 307 },
+      "data": {
+        "title": "KADOE — Police Driver Enquiry Interface",
+        "description": "Knowledge At Date Of Event (KADOE) is the interface used by police to query DVLA's driver and vehicle records in real time at the roadside or during investigations. Also used to notify DVLA of disqualifications, seizures, and medical concerns arising from police contact.",
+        "nodeType": "evidence",
+        "owner": "Roads Policing / DVLA IT",
+        "organisation": "Police / DVLA",
+        "tags": ["police", "cross-boundary", "data-exchange", "automated", "enforcement"],
+        "status": "active",
+        "confidenceScore": 0.85,
+        "notes": "Read queries from police are automated. Notifications from police back to DVLA about medical concerns are less structured. Coverage and usage varies by force.",
+        "automationLevel": 0.72,
+        "criticalityLevel": 0.62,
+        "overlays": { "orgBoundaries": true },
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    },
+    {
+      "id": "dm19",
+      "type": "evidence",
+      "position": { "x": 784, "y": 397 },
+      "data": {
+        "title": "Case Audit & Correspondence Log",
+        "description": "Record of all actions, decisions, correspondence, and notes on a medical case. Supports internal quality review, Subject Access Requests, legal proceedings, and complaints handling.",
+        "nodeType": "evidence",
+        "owner": "Drivers Medical Group",
+        "organisation": "DVLA",
+        "tags": ["audit", "compliance", "correspondence"],
+        "status": "active",
+        "confidenceScore": 0.78,
+        "notes": "Paper and digital records may coexist for older cases. Completeness depends on caseworker discipline. Important for court appeals where DVLA must disclose its decision-making process.",
+        "automationLevel": 0.72,
+        "criticalityLevel": 0.52,
+        "overlays": {},
+        "riskFlags": [],
+        "opportunities": [],
+        "selected": false
+      },
+      "draggable": true
+    }
+  ],
+  "edges": [
+    {
+      "id": "dme1",
+      "source": "dm1",
+      "target": "dm7",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "triggers",
+        "description": "Online medical notification opens a case and triggers initial caseworker triage",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "dme2",
+      "source": "dm4",
+      "target": "dm7",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "triggers",
+        "description": "Third-party notification (police, NHS, courts) triggers case triage",
+        "interoperabilityNote": "No structured data format — notifications arrive by letter, email, or KADOE flag. Manual processing required."
+      }
+    },
+    {
+      "id": "dme3",
+      "source": "dm6",
+      "target": "dm7",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "transfersTo",
+        "description": "Contact centre passes driver-initiated enquiries into the case queue",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "dme4",
+      "source": "dm7",
+      "target": "dm2",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "triggers",
+        "description": "Triage triggers dispatch of condition-specific questionnaire to the driver",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "dme5",
+      "source": "dm7",
+      "target": "dm8",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "escalatesTo",
+        "description": "Complex or borderline cases escalated from caseworker triage to DVLA Medical Adviser",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "dme6",
+      "source": "dm7",
+      "target": "dm9",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "triggers",
+        "description": "Straightforward cases decided at triage stage without Medical Adviser involvement",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "dme7",
+      "source": "dm2",
+      "target": "dm8",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "informs",
+        "description": "Completed medical questionnaire returned by driver informs Medical Adviser review",
+        "interoperabilityNote": "Paper form — scanned or manually entered. No structured data exchange."
+      }
+    },
+    {
+      "id": "dme8",
+      "source": "dm3",
+      "target": "dm8",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "informs",
+        "description": "D4 examination report submitted by doctor informs Medical Adviser's assessment of vocational fitness",
+        "interoperabilityNote": "Paper form completed by examining doctor. Posted to DVLA. No digital submission route."
+      }
+    },
+    {
+      "id": "dme9",
+      "source": "dm17",
+      "target": "dm8",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "informs",
+        "description": "GP or specialist medical report provides clinical evidence for Medical Adviser review",
+        "interoperabilityNote": "NHS to DVLA. No structured data exchange. Letter/PDF posted or faxed. Delays of 4–8 weeks common."
+      }
+    },
+    {
+      "id": "dme10",
+      "source": "dm16",
+      "target": "dm8",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "constrains",
+        "description": "At a Glance medical standards guide defines the criteria Medical Advisers must apply",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "dme11",
+      "source": "dm16",
+      "target": "dm9",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "constrains",
+        "description": "Statutory medical standards constrain the possible licensing decisions",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "dme12",
+      "source": "dm8",
+      "target": "dm9",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "informs",
+        "description": "Medical Adviser opinion informs the formal licensing decision",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "dme13",
+      "source": "dm15",
+      "target": "dm7",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "informs",
+        "description": "Existing driver medical record informs caseworker triage — prior conditions, history, and decisions visible",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "dme14",
+      "source": "dm15",
+      "target": "dm8",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "informs",
+        "description": "Full medical case history informs Medical Adviser's review of complex or recurring cases",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "dme15",
+      "source": "dm11",
+      "target": "dm15",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "informs",
+        "description": "VISTA holds and surfaces the driver medical record for caseworker and Medical Adviser use",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "dme16",
+      "source": "dm18",
+      "target": "dm7",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "informs",
+        "description": "KADOE police data flags medical concerns and disqualifications that can trigger case review",
+        "interoperabilityNote": "Police → DVLA. Structured for vehicle queries; medical concern notifications are less standardised."
+      }
+    },
+    {
+      "id": "dme17",
+      "source": "dm9",
+      "target": "dm12",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "triggers",
+        "description": "Positive licence decision triggers production and dispatch of photocard licence",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "dme18",
+      "source": "dm9",
+      "target": "dm13",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "triggers",
+        "description": "Revocation or refusal decision triggers the licence revocation processing workflow",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "dme19",
+      "source": "dm9",
+      "target": "dm14",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "triggers",
+        "description": "Licensing decision triggers automated driver notification via GOV.UK Notify (for digital acknowledgements) and postal letter for formal outcome",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "dme20",
+      "source": "dm14",
+      "target": "dm5",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "triggers",
+        "description": "GOV.UK Notify sends digital acknowledgements; postal decision letters dispatched separately",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "dme21",
+      "source": "dm9",
+      "target": "dm10",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "escalatesTo",
+        "description": "Driver may appeal a refusal or revocation directly to magistrates court (England/Wales) or sheriff court (Scotland)",
+        "interoperabilityNote": "DVLA to HMCTS. No administrative appeal stage — judicial route only. DVLA legally represented at hearing."
+      }
+    },
+    {
+      "id": "dme22",
+      "source": "dm13",
+      "target": "dm18",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "informs",
+        "description": "Revocation is flagged on the driver record and notified to police via KADOE so enforcement action can be taken if driver continues to drive",
+        "interoperabilityNote": ""
+      }
+    },
+    {
+      "id": "dme23",
+      "source": "dm19",
+      "target": "dm8",
+      "type": "relationship",
+      "data": {
+        "relationshipType": "informs",
+        "description": "Case correspondence and audit log informs Medical Adviser review and supports court disclosure obligations",
+        "interoperabilityNote": ""
+      }
+    }
+  ]
+}

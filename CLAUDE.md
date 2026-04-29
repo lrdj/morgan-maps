@@ -2,6 +2,18 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+> **There are now two implementations in this repo.** The original React /
+> ReactFlow / Tailwind prototype lives at the repo root (this file). A
+> plain-JS / Express rebuild with full feature parity lives in
+> [`morgan-maps-express/`](./morgan-maps-express/) — that directory has its
+> own `README.md`, `ROADMAP.md`, `CHANGELOG.md`, and `CLAUDE.md`.
+>
+> The Express edition is the canonical project going forward; the React
+> tree is kept for visual diffing during the port. Plan to delete it once
+> the Express edition has been verified in active use. See
+> `morgan-maps-express/ROADMAP.md` for the swap plan and the GOV.UK
+> Prototype Kit context.
+
 ## Commands
 
 ```bash
