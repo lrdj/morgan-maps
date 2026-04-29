@@ -18,7 +18,7 @@ dependency except Express itself.
 
 React and Tailwind create hard-to-maintain, complex codebases — I say that as
 someone who doesn't have access to a React developer. React is also a fruit
-of Facebook, which in my personal opinion is a poison tree.
+of Facebook, which in my personal opinion is a poisoned tree.
 
 The kinds of web services I work with are not Facebook. They do not require
 real-time updating of thousands of little page fragments, so React's
