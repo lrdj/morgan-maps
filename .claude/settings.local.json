@@ -22,7 +22,9 @@
       "Bash(curl -s -o /dev/null -w \"JS toolbar HTTP %{http_code}\\\\n\" http://localhost:5174/js/toolbar.js)",
       "Bash(curl -s -o /dev/null -w \"JS panels/nodeDetail HTTP %{http_code}\\\\n\" http://localhost:5174/js/panels/nodeDetail.js)",
       "Bash(curl -s http://localhost:5174/js/app.js)",
-      "Bash(curl -s http://localhost:5174/js/state.js)"
+      "Bash(curl -s http://localhost:5174/js/state.js)",
+      "Bash(git -C /Users/dug/Sites/morgan-maps status --short)",
+      "Bash(git *)"
     ]
   }
 }
