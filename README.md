@@ -1,4 +1,4 @@
-_This work is a fork of @tomwm's work at https://github.com/tomwm/tomwm-lab -- There is a readme that explains the map funtion before conversion to Express at README-tomwm.md_
+_This work is a fork of @tomwm's work at https://github.com/tomwm/tomwm-lab -- There is a readme that explains the map function before conversion to Express at README-tomwm.md_
 
 # Morgan Map (Express edition)
 
