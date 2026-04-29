@@ -1,3 +1,7 @@
+_This work is a fork of @tomwm's work at https://github.com/tomwm/tomwm-lab_
+
+There is a README that explains the map funtion before conversion to Express at /README-tomwm
+
 # Morgan Map (Express edition)
 
 A decision-centred service-mapping tool. Plots the elements of a service on two
